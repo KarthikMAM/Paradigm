@@ -12,3 +12,7 @@ The app was created to provide the participants of "Paradigm", the technical sym
   <li>Map of the department
   <li>Gallery
 </ul>
+
+The official website for Paradigm is 
+  3D Site : www.ssnparadigm.com
+  2D Site : m.ssnparadigm.com
