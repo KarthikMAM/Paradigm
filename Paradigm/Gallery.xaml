@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Paradigm.Gallery"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paradigm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ctrl="using:LightStone.Controls"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="Assets/Pages/Background.png" Stretch="UniformToFill"/>
+    </Page.Background>
+
+    <Page.Resources>
+        <DataTemplate x:Key="TemplateFullScreen">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image Source="{Binding BitmapImage}" Width="400" VerticalAlignment="Bottom" 
+                               Stretch="Fill"></Image>
+                <Rectangle Grid.Row="1" Fill="Transparent" Margin="0,10" ></Rectangle>
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Margin="0,0,0,20"/>
+        <ctrl:LightStone ItemsSource="{Binding Datas}" 
+                        SelectedIndex="0"
+                        ItemTemplate="{StaticResource TemplateFullScreen}"
+                        TransitionDuration="200" 
+                        Depth="70" 
+                        MaxVisibleItems="4"
+                        x:Name="LightStoneElement"
+                        Rotation="50" 
+                        TranslateY="28"
+                        TranslateX ="23">
+            <ctrl:LightStone.EasingFunction>
+                <CubicEase EasingMode="EaseOut" />
+            </ctrl:LightStone.EasingFunction>
+        </ctrl:LightStone>
+    </Grid>
+</Page>

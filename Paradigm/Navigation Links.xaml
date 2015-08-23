@@ -1,0 +1,69 @@
+﻿<ContentDialog
+    x:Class="Paradigm.Navigation_Links"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paradigm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="@KARTHIK M A M"
+    PrimaryButtonText="Ok!" 
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick">
+
+    <Grid HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" x:Name="github1"/>
+            <ColumnDefinition Width="10" x:Name="github2"/>
+            <ColumnDefinition Width="50" x:Name="facebook1"/>
+            <ColumnDefinition Width="10" x:Name="facebook2"/>
+            <ColumnDefinition Width="50" x:Name="mail1"/>
+            <ColumnDefinition Width="10" x:Name="mail2"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="0" x:Name="github3"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <ListView 
+            ItemClick="ListView_ItemClick"
+            BorderBrush="White"
+            BorderThickness="2"
+            Name="Github"
+            Grid.Column="0" 
+            Height="50" Width="50"
+            IsItemClickEnabled="True">
+            <Image Source="Assets/Links/Github.png"/>
+        </ListView>
+        <ListView 
+            ItemClick="ListView_ItemClick"
+            BorderBrush="White"
+            BorderThickness="2"
+            Name="Facebook"
+            Grid.Column="2" 
+            Height="50" Width="50"
+            IsItemClickEnabled="True">
+            <Image Source="Assets/Links/Facebook.png"/>
+        </ListView>
+        <ListView 
+            ItemClick="ListView_ItemClick"
+            BorderBrush="White"
+            BorderThickness="2"
+            Name="Mail"
+            Grid.Column="4" 
+            Height="50" Width="50"
+            IsItemClickEnabled="True">
+            <Image Source="Assets/Links/Mail.png"/>
+        </ListView>
+        <ListView 
+            ItemClick="ListView_ItemClick"
+            BorderBrush="White"
+            BorderThickness="2"
+            Name="Call"
+            Grid.Column="6" 
+            Height="50" Width="50"
+            IsItemClickEnabled="True">
+            <Image Source="Assets/Links/Call.jpg"/>
+        </ListView>
+    </Grid>
+</ContentDialog>

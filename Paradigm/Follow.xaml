@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="Paradigm.Follow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paradigm.Assets"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="Assets/Pages/Background.png"/>
+    </Page.Background>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="PARADIGM" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="about" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <ScrollViewer Grid.Row="1" Margin="19,9.5,9,0">
+            <StackPanel>
+                <Grid x:Name="ContentRoot">
+                    <Grid.ChildrenTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </Grid.ChildrenTransitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="115"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="115"/>
+                        <ColumnDefinition Width="115"/>
+                        <ColumnDefinition Width="115"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="find us@" Margin="0,0,0,20" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Grid.ColumnSpan="3" Grid.Row="0"/>
+                    <ListView IsItemClickEnabled="True" Name="Facebook" ItemClick="ListView_ItemClick" Grid.Row="1" Grid.Column="0" BorderBrush="White" BorderThickness="2" Margin="5">
+                        <Image Height="110" VerticalAlignment="Top" Width="110" Source="Assets/Links/Facebook.png" Stretch="Fill"/>
+                    </ListView>
+                    <ListView IsItemClickEnabled="True" Name="Website" ItemClick="ListView_ItemClick" Grid.Row="1" Grid.Column="1" Margin="5" BorderBrush="White" BorderThickness="2">
+                        <Image Height="110" VerticalAlignment="Top" Width="110" Source="Assets/Links/Explorer.jpg" Stretch="Fill"/>
+                    </ListView>
+                    <ListView IsItemClickEnabled="True" Name="Maps" ItemClick="ListView_ItemClick" Grid.Row="1" Grid.Column="2" Margin="5" BorderBrush="White" BorderThickness="2">
+                        <Image  Height="110" VerticalAlignment="Top" Width="110" Source="Assets/Links/Maps.png" Stretch="Fill"/>
+                    </ListView>
+                    <TextBlock Text="developers" Margin="0,0,0,20" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                    <ListView Name="Developers" IsItemClickEnabled="True" ItemClick="Developers_ItemClick" Grid.Row="3" Grid.ColumnSpan="3"/>
+                    <TextBlock Text="credits" Margin="0,0,0,20" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Grid.ColumnSpan="3" Grid.Row="4"/>
+                    <ListView Name="Credits" IsItemClickEnabled="True" ItemClick="Developers_ItemClick" Grid.Row="5" Grid.ColumnSpan="3"/>
+                </Grid>
+                <TextBlock Text="disclaimer" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+                <TextBlock
+                    Margin="0,10,0,0"
+                    Text="The information provided in this app is to be used for informative purpose only. The event rules and regulations are subject to change without any notice. Neither the organizers nor the developers are responsible for the accuracy of the information provided in this application."
+                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                <Button
+                    Click="Button_Click"
+                    Margin="0,50,0,0"
+                    Content="Feedback" 
+                    FontSize="35"/>
+                <TextBlock
+                    TextAlignment="Right"
+                    Margin="0,-40,5,0"
+                    Text="© Kappspot"
+                    Style="{ThemeResource BodyTextBlockStyle}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,22 @@
+﻿<ContentDialog
+    x:Class="Paradigm.ExpandedItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paradigm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Hello"
+    Name="Dialog"
+    mc:Ignorable="d"
+    PrimaryButtonText="Ok!"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick">
+    <ContentDialog.TitleTemplate>
+        <DataTemplate>
+            <TextBlock Text="{Binding ElementName=Dialog, Path=Title}" TextWrapping="Wrap"/>
+        </DataTemplate>
+    </ContentDialog.TitleTemplate>
+
+    <Grid Name="Name">
+        <TextBlock Name="Body" Style="{StaticResource MessageDialogContentStyle}" TextWrapping="Wrap"/>
+    </Grid>
+</ContentDialog>

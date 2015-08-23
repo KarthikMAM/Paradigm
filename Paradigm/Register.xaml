@@ -1,0 +1,57 @@
+﻿<ContentDialog
+    x:Class="Paradigm.Register"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paradigm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="REGISTRATION"
+    PrimaryButtonText="Submit"  
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick" 
+    Margin="0,0,-4,0">
+    <ContentDialog.Background>
+        <ImageBrush ImageSource="Assets/Background.png" Stretch="UniformToFill"/>
+    </ContentDialog.Background>
+
+    <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Visible">
+        <StackPanel>
+            <TextBox  Name="Name" Header="Name" InputScope="AlphanumericFullWidth"/>
+            <TextBox Name="Phone" Header="Phone" InputScope="TelephoneNumber"/>
+            <TextBox Name="Email" Header="Email address" InputScope="EmailSmtpAddress"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox
+                    Grid.Column="0"
+                    Name="Department" Header="Department" Margin="0,0,10,0" SelectedIndex="0">
+                    <ComboBoxItem>CSE</ComboBoxItem>
+                    <ComboBoxItem>IT</ComboBoxItem>
+                    <ComboBoxItem>ECE</ComboBoxItem>
+                    <ComboBoxItem>EEE</ComboBoxItem>
+                    <ComboBoxItem>OTHERS</ComboBoxItem>
+                </ComboBox>
+                <ComboBox
+                    Grid.Column="1"
+                    Name="Year" Header="Year" Margin="10,0,0,0" SelectedIndex="0">
+                    <ComboBoxItem>FIRST</ComboBoxItem>
+                    <ComboBoxItem>SECOND</ComboBoxItem>
+                    <ComboBoxItem>THIRD</ComboBoxItem>
+                    <ComboBoxItem>FOURTH</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+            <TextBox Name="Institution" Header="Institution"/>
+
+            <!-- Content body -->
+            <TextBlock Name="Body" Style="{StaticResource MessageDialogContentStyle}" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    Please verify all the details before hitting the submit button.
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+    </ScrollViewer>
+</ContentDialog>

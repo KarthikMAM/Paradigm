@@ -1,0 +1,262 @@
+﻿<Page
+    x:Class="Paradigm.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paradigm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Storyboard x:Name="FlipAnimation" BeginTime="0:0:7" Completed="FlipAnimation_Completed">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="Gallery">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.SkewX)" Storyboard.TargetName="Gallery">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-5"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="FlipAnimationReverse" Completed="FlipAnimation_Completed">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="Gallery">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.SkewX)" Storyboard.TargetName="Gallery">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid>
+        <ScrollViewer Name="BackgroundScroll">
+            <Grid Height="1000" Name="BackgroundScrollGrid">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Assets/Pages/Background.png" Stretch="Fill"/>
+                </Grid.Background>
+            </Grid>
+        </ScrollViewer>
+        <ScrollViewer Name="MainScroller" ViewChanging="MainScroller_ViewChanging" VerticalScrollMode="Enabled">
+            <Grid>
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" x:Name="column"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding ElementName=column, Path=Width}"/>
+                    <RowDefinition Height="{Binding ElementName=column, Path=Width}"/>
+                    <RowDefinition Height="{Binding ElementName=column, Path=Width}"/>
+                    <RowDefinition Height="{Binding ElementName=column, Path=Width}"/>
+                    <RowDefinition Height="{Binding ElementName=column, Path=Width}"/>
+                    <RowDefinition Height="{Binding ElementName=column, Path=Width}"/>
+                    <RowDefinition Height="{Binding ElementName=column, Path=Width}"/>
+                </Grid.RowDefinitions>
+
+
+                <ListView  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" 
+                           Name="Paradigm"
+                           IsItemClickEnabled="True" ItemClick="ListView_ItemClick" 
+                           Height="396"
+                           Margin="3,3,3,1">
+                    <ListViewItem>
+                        <StackPanel>
+                            <StackPanel.ChildrenTransitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition/>
+                                </TransitionCollection>
+                            </StackPanel.ChildrenTransitions>
+                            <FlipView Name="MainCarousel" Height="{Binding ElementName=Paradigm, Path=Height}" IsEnabled="False" BorderBrush="White" BorderThickness="1">
+                                <FlipView.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#3F000000" Offset="1"/>
+                                        <GradientStop Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </FlipView.Background>
+                                <FlipView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Vertical"/>
+                                    </ItemsPanelTemplate>
+                                </FlipView.ItemsPanel>
+                                <Image Source="Assets/Pages/ParadigmTile.png" Height="150" Width="150"/>
+                                <Image Source="Assets/Pages/ParadigmName.png" Height="150"/>
+                                <Image Source="Assets/Slides/Pic02.jpg" Stretch="Fill"/>
+                                <Image Source="Assets/Pages/ParadigmTile.png" Height="150" Width="150"/>
+                                <Image Source="Assets/Slides/Pic09.jpg" Stretch="Fill"/>
+                            </FlipView>
+                            <TextBlock Text="Paradigm" FontSize="30" Margin="10,-55,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+                <ListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" 
+                           Name="Register" 
+                           IsItemClickEnabled="True" ItemClick="ListView_ItemClick"  
+                           Height="131"
+                           Margin="3,1,1,1">
+                    <ListViewItem>
+                        <StackPanel>
+                            <StackPanel.ChildrenTransitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition/>
+                                </TransitionCollection>
+                            </StackPanel.ChildrenTransitions>
+                            <FlipView Name="RegisterCarousel" Height="{Binding ElementName=Register, Path=Height}" IsEnabled="False" BorderBrush="White" BorderThickness="1">
+                                <FlipView.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#3F000000" Offset="1"/>
+                                        <GradientStop Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </FlipView.Background>
+                                <Image Source="Assets/Pages/RegisterTile.png" Height="55" Width="55"/>
+                            </FlipView>
+                            <TextBlock Text="Register" FontSize="25" Margin="10,-40,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+                <ListView  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" 
+                           Name="Events" 
+                           IsItemClickEnabled="True" ItemClick="ListView_ItemClick" 
+                           Height="131"
+                           Margin="1,1,3,1" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem>
+                        <StackPanel>
+                            <StackPanel.ChildrenTransitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition/>
+                                </TransitionCollection>
+                            </StackPanel.ChildrenTransitions>
+                            <FlipView Name="EventsCarousel" Height="{Binding ElementName=Events, Path=Height}" IsEnabled="False" BorderBrush="White" BorderThickness="1">
+                                <FlipView.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#3F000000" Offset="1"/>
+                                        <GradientStop Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </FlipView.Background>
+                                <Image Source="Assets/Pages/EventsTile.png" Height="55" Width="55"/>
+                            </FlipView>
+                            <TextBlock Text="Events" FontSize="25" Margin="10,-40,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+                <ListView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" 
+                           Name="Feeds" 
+                           IsItemClickEnabled="True" ItemClick="ListView_ItemClick" 
+                           Height="131"
+                           Margin="3,1,3,1">
+                    <ListViewItem>
+                        <StackPanel>
+                            <StackPanel.ChildrenTransitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition/>
+                                </TransitionCollection>
+                            </StackPanel.ChildrenTransitions>
+                            <FlipView x:Name="FeedsCarousel" Height="{Binding Height, ElementName=Feeds}" IsEnabled="False" BorderBrush="White" BorderThickness="1">
+                                <FlipView.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#3F000000" Offset="1"/>
+                                        <GradientStop Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </FlipView.Background>
+                                <Image Source="Assets/Pages/FeedsTile.png" Height="55" Width="55"/>
+                            </FlipView>
+                            <TextBlock Text="Feeds" FontSize="25" Margin="10,-40,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+                <ListView  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1"
+                           Name="Links" 
+                           IsItemClickEnabled="True" ItemClick="ListView_ItemClick" 
+                           Height="131"
+                           Margin="3,1,1,1">
+                    <ListViewItem>
+                        <StackPanel>
+                            <StackPanel.ChildrenTransitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition/>
+                                </TransitionCollection>
+                            </StackPanel.ChildrenTransitions>
+                            <FlipView Name="LinksCarousel" Height="{Binding ElementName=Links, Path=Height}" IsEnabled="False" BorderBrush="White" BorderThickness="1">
+                                <FlipView.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#3F000000" Offset="1"/>
+                                        <GradientStop Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </FlipView.Background>
+                                <Image Source="Assets/Pages/LinksTile.png" Height="55" Width="55"/>
+                            </FlipView>
+                            <TextBlock Text="About" FontSize="25" Margin="10,-40,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+                <ListView  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" 
+                           Name="Map" 
+                           IsItemClickEnabled="True" ItemClick="ListView_ItemClick" 
+                           Height="129.5"
+                           Margin="3,1,1,1">
+                    <ListViewItem>
+                        <StackPanel>
+                            <StackPanel.ChildrenTransitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition/>
+                                </TransitionCollection>
+                            </StackPanel.ChildrenTransitions>
+                            <FlipView Name="MapCarousel" Height="{Binding ElementName=Map, Path=Height}" IsEnabled="False" BorderBrush="White" BorderThickness="1">
+                                <FlipView.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#3F000000" Offset="1"/>
+                                        <GradientStop Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </FlipView.Background>
+                                <Image Source="Assets/Pages/MapsTile.png" Height="55" Width="55"/>
+                            </FlipView>
+                            <TextBlock Text="Map" FontSize="25" Margin="10,-40,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+                <ListView  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" 
+                           Name="Gallery" 
+                           IsItemClickEnabled="True" ItemClick="ListView_ItemClick" 
+                           Height="262"
+                           Margin="1,1,3,1" RenderTransformOrigin="0.5, 0.5">
+                    <ListView.RenderTransform>
+                        <CompositeTransform/>
+                    </ListView.RenderTransform>
+                    <ListViewItem>
+                        <StackPanel>
+                            <StackPanel.ChildrenTransitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition/>
+                                </TransitionCollection>
+                            </StackPanel.ChildrenTransitions>
+                            <FlipView Name="GalleryCarousel" Height="{Binding ElementName=Gallery, Path=Height}" IsEnabled="False" BorderBrush="White" BorderThickness="1">
+                                <FlipView.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#3F000000" Offset="1"/>
+                                        <GradientStop Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </FlipView.Background>
+                                <Image Source="Assets/Pages/GalleryTile.png" Height="70" Width="70"/>
+                                <Image Source="Assets/Slides/Pic03.jpg" Stretch="Fill"/>
+                                <Image Source="Assets/Slides/Pic01.jpg" Stretch="Fill"/>
+                                <Image Source="Assets/Slides/Pic13.jpg" Stretch="Fill"/>
+                                <Image Source="Assets/Slides/Pic14.jpg" Stretch="Fill"/>
+                                <Image Source="Assets/Slides/Pic07.jpg" Stretch="Fill"/>
+                            </FlipView>
+                            <TextBlock Text="Gallery" FontSize="25" Margin="10,-40,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

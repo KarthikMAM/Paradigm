@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="Paradigm.EventDetail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paradigm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="Assets/Pages/Background.png" Stretch="UniformToFill"/>
+    </Page.Background>
+
+    <Pivot Name="PivotHead" Title="EventName">
+        <Pivot.Transitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Pivot.Transitions>
+        <PivotItem Header="about">
+            <ScrollViewer>
+                <TextBlock Name="About" Text="Hello" FontSize="20" TextWrapping="WrapWholeWords" Padding="0,0,0,100"/>
+            </ScrollViewer>
+        </PivotItem>
+        <PivotItem Header="rules">
+            <ListView Name="Rules" SizeChanged="ListView_SizeChanged" Padding="0,0,0,100" ItemClick="Listview_ItemClick" IsItemClickEnabled="True">
+                <ListView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <ContentThemeTransition/>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </ListView.ItemContainerTransitions>
+            </ListView>
+        </PivotItem>
+        <PivotItem Header="teams">
+            <ListView Name="Teams" SizeChanged="ListView_SizeChanged" Padding="0,0,0,100" IsItemClickEnabled="True" ItemClick="Listview_ItemClick">
+                <ListView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <ContentThemeTransition/>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </ListView.ItemContainerTransitions>
+            </ListView>
+        </PivotItem>
+        <PivotItem Header="organizers">
+            <ListView Name="Organizers" ItemClick="Organizers_ItemClick" IsItemClickEnabled="True" Padding="0,0,0,100">
+                <ListView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <ContentThemeTransition/>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </ListView.ItemContainerTransitions>
+            </ListView>
+        </PivotItem>
+    </Pivot>
+</Page>
