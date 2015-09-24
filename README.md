@@ -1,8 +1,7 @@
 # Paradigm
-A windows phone app for the symposium of CSE Department "Paradigm"
 
 <h4>Description</h4>
-The app was created to provide the participants of "Paradigm", the technical symposium of SSN College of Engineering. It provides the participants with
+A windows phone app for the symposium of CSE Department "Paradigm". The app was created to provide the participants of "Paradigm", the technical symposium of SSN College of Engineering. It provides the participants with the following features
 
 <h4>Features</h4>
 <ul>
